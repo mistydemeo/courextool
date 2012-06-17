@@ -4,8 +4,8 @@ require File.expand_path('../lib/courex/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Misty De Meo"]
   gem.email         = ["mistydemeo@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Simple CLI tool to access the Courex API}
+  gem.summary       = %q{Simple CLI tool to access the Courex API}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
