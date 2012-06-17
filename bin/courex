@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
+
+require 'slop'
+require 'courex'
+
+opts = Slop.parse! do
+  on :s, :stdout, 'Write to stdout'
+end
+
+if !ARGV[0]
+  STDERR.puts "Error: a tracking number must be specified."
+  exit Errno::EINVAL::Errno
+end
+
+dispatch = Courex::Dispatch.new ARGV[0]
+
+puts dispatch.to_xml
