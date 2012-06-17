@@ -1,3 +1,3 @@
-module Courextool
+module Courex
   VERSION = "0.0.1"
 end

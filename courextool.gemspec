@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/courextool/version', __FILE__)
+require File.expand_path('../lib/courex/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Misty De Meo"]
@@ -14,4 +14,5 @@ Gem::Specification.new do |gem|
   gem.name          = "courextool"
   gem.require_paths = ["lib"]
   gem.version       = Courextool::VERSION
+  gem.version       = Courex::VERSION
 end
