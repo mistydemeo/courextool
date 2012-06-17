@@ -13,6 +13,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "courextool"
   gem.require_paths = ["lib"]
-  gem.version       = Courextool::VERSION
   gem.version       = Courex::VERSION
+
+  gem.add_runtime_dependency "nokogiri"
+  gem.add_runtime_dependency "slop"
 end
