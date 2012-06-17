@@ -6,12 +6,24 @@ require 'courex'
 
 opts = Slop.parse! do
   on :s, :stdout, 'Write to stdout'
+  on :u, :username, "Username", argument: true
+  on :p, :password, "Password", argument: true
 end
 
 if !ARGV[0]
   STDERR.puts "Error: a tracking number must be specified."
   exit Errno::EINVAL::Errno
 end
+
+[:username, :password].each do |key|
+  if !opts[key]
+    STDERR.puts "Error: #{key} must be specified"
+    exit Errno::EINVAL::Errno
+  end
+end
+
+Courex.username = opts[:username]
+Courex.password = opts[:password]
 
 dispatch = Courex::Dispatch.new ARGV[0]
 

@@ -9,8 +9,8 @@ module Courex
         xml.RequestCall {
           xml.AppType 'Tracking'
 
-          xml.UserName 'username'
-          xml.Password 'password'
+          xml.UserName Courex.username
+          xml.Password Courex.password
 
           xml.Parameters {
             xml.TrackNo tracking_number
@@ -21,4 +21,16 @@ module Courex
 
     def to_xml; @xml.to_xml; end
   end
+
+  def self.username= name
+    @username = name
+  end
+
+  def self.username; @username; end
+
+  def self.password= pass
+    @password = pass
+  end
+
+  def self.password; @password; end
 end
