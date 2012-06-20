@@ -8,6 +8,7 @@ opts = Slop.parse! do
   on :s, :stdout, 'Write to stdout'
   on :u, :username, "Username", argument: true
   on :p, :password, "Password", argument: true
+  on [:debug], 'Print XML to send to stdout'
 end
 
 if !ARGV[0]
@@ -27,4 +28,6 @@ Courex.password = opts[:password]
 
 dispatch = Courex::Dispatch.new ARGV[0]
 
-puts dispatch.to_xml
+STDOUT.puts dispatch.to_xml if opts[:debug]
+
+STDOUT.puts dispatch.send.body
