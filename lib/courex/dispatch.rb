@@ -1,10 +1,14 @@
+require 'net/http'
 require 'nokogiri'
 
 module Courex
   class Dispatch
     attr_accessor :xml
+    attr_reader   :tracking_number
 
     def initialize tracking_number
+      @tracking_number = tracking_number
+
       @xml = Nokogiri::XML::Builder.new do |xml|
         xml.RequestCall {
           xml.AppType 'Tracking'
@@ -20,6 +24,18 @@ module Courex
     end
 
     def to_xml; @xml.to_xml; end
+
+    def send
+      uri = URI('http://www.courex.com.sg/xml/index.php')
+      post = Net::HTTP::Post.new uri.path
+
+      post.content_type = 'application/x-www-form-urlencoded'
+      post.user_agent = 'CourexGateway_socket/1.0'
+      post['Accept'] = '*/*'
+      post.body = @xml.to_xml
+
+      response = Net::HTTP.start(uri.host, uri.port) {|http| http.request(post)}
+    end
   end
 
   def self.username= name

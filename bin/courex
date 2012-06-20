@@ -30,4 +30,4 @@ dispatch = Courex::Dispatch.new ARGV[0]
 
 STDOUT.puts dispatch.to_xml if opts[:debug]
 
-STDOUT.puts dispatch.send.body
+STDOUT.puts dispatch.dispatch.body
