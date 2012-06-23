@@ -30,7 +30,7 @@ module Courex
       post = Net::HTTP::Post.new uri.path
 
       post.content_type = 'application/x-www-form-urlencoded'
-      post.user_agent = 'CourexGateway_socket/1.0'
+      post['user-Agent'] = 'CourexGateway_socket/1.0'
       post['Accept'] = '*/*'
       post.body = @xml.to_xml
 
