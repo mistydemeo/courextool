@@ -25,7 +25,7 @@ module Courex
 
     def to_xml; @xml.to_xml; end
 
-    def send
+    def dispatch
       uri = URI('http://www.courex.com.sg/xml/index.php')
       post = Net::HTTP::Post.new uri.path
 
