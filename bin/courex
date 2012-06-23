@@ -5,10 +5,15 @@ require 'slop'
 require 'courex'
 
 opts = Slop.parse! do
+  banner "courex -u username -p password <tracking number>"
   on :s, :stdout, 'Write to stdout'
   on :u, :username, "Username", argument: true
   on :p, :password, "Password", argument: true
   on :debug, 'Print XML to send to stdout'
+  on :h, :help, "Display this message" do
+    puts help
+    exit 0
+  end
 end
 
 if !ARGV[0]
